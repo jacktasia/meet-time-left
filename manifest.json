@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Google Meet Time Left",
+  "version": "1.0",
+  "description": "A Chrome extension that runs on Google Meet and shows time left in the meeting",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }//,
+//  "action": {
+//    "default_popup": "popup.html"
+//  }
+}
