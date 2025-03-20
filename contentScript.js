@@ -73,6 +73,7 @@ function mainTimeLeft() {
   } else {
     console.log("debug: can't find meeting details BUTTON checking again in a second[b]");
     setTimeout(mainTimeLeft, 1000);
+    return;
   }
 
   // we wait 500ms for the more info to open
