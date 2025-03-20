@@ -8,11 +8,12 @@ function injectElement() {
     div.textContent = 'Checking time left...';
     div.id = "time-left";
     div.style.position = 'fixed';
-    div.style.top = '0px';
-    div.style.right = '0px';
+    div.style.top = '18px';
+    div.style.right = '75px';
     div.style.background = 'grey';
-    div.style.padding = '10px'; // Optional: Add some padding for better readability
+    div.style.padding = '10px';
     div.style.zIndex = '9999';
+    div.style.borderRadius = '10px';
     document.body.appendChild(div);
 }
 
@@ -48,6 +49,7 @@ function setTimeRemaining(rawMeetingTime) {
   if (timeDifference < 5) {
     el.style.background = 'red';
     el.style.fontWeight = 'bold';
+    el.style.color = 'white';
   } else if (timeDifference < 10) {
     el.style.background = 'yellow';
   }
