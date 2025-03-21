@@ -17,6 +17,7 @@ function injectTimeLeftElement() {
     div.style.zIndex = '999999';
     div.style.borderRadius = '10px';
     div.style.textShadow = '1px 1px 5px rgba(0, 0, 0, 0.5)';
+    div.style.fontWeight = 'bold';
 
     if (document.querySelector('[aria-label="Gemini isn\'t taking notes"]') !== null) {
       document.querySelector('[aria-label="Gemini isn\'t taking notes"]').parentNode.parentNode.parentNode.parentNode.appendChild(div);
@@ -76,9 +77,7 @@ function handleNotifyChat() {
   }
 
   // is chat already open???
-
   const isChatOpen = chatDiv.parentNode && chatDiv.parentNode.querySelector('button') && chatDiv.parentNode.querySelector('button').getAttribute('aria-pressed') == 'true'
-
 
   if (!isChatOpen) {
     if (!!chatDiv.parentNode && chatDiv.parentNode.querySelector('button') !== null) {
@@ -90,8 +89,7 @@ function handleNotifyChat() {
     }
   }
 
-  // wait for chat to open!
-
+  // wait for chat to open regardless!
   setTimeout(() => {
     const curText = document.querySelector('#time-left').innerText;
     const word = curText.indexOf('left') > -1 ? 'have' : 'are';
@@ -122,7 +120,6 @@ function findUniqueElementByText(elType, textContent) {
 
 function setTimeRemaining(rawMeetingTime) {
   const timeDifference = calculateTimeDifference(rawMeetingTime);
-  console.log('timeDifference', timeDifference);
   var newText = `${Math.floor(timeDifference)} min left`;
   if (timeDifference < 0) {
     newText = `${Math.floor(Math.abs(timeDifference))} min over`;
@@ -133,18 +130,13 @@ function setTimeRemaining(rawMeetingTime) {
   el.innerText = newText;
 
   if (timeDifference < 1) {
-    //el.style.background = 'red';
-    el.style.background = "linear-gradient(135deg, rgb(211, 47, 47), rgb(239, 83, 80))";
-    el.style.fontWeight = 'bold';
+    el.style.background = "linear-gradient(135deg, rgb(211, 47, 47), rgb(239, 83, 80))"; // red
     showNotifyButton();
   } else if (timeDifference < 5) {
-    // el.style.background = 'orange';
-    el.style.background = "linear-gradient(135deg, rgb(255, 87, 34), rgb(255, 119, 60))";
-    el.style.fontWeight = 'bold';
+    el.style.background = "linear-gradient(60deg, #FFEB3B, rgb(255, 119, 60));"; // orange
     showNotifyButton();
   } else if (timeDifference < 10) {
-    // el.style.background = 'yellow';
-    el.style.background = "linear-gradient(135deg, rgb(255, 193, 7), rgb(255, 214, 10))";
+    el.style.background = "linear-gradient(135deg, rgb(255, 193, 7), rgb(255, 214, 10))"; // yellow
     showNotifyButton();
   }
 }
