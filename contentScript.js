@@ -93,7 +93,9 @@ function handleNotifyChat() {
   // wait for chat to open!
 
   setTimeout(() => {
-    document.querySelector('textarea').value = 'FYI: We are ' + document.querySelector('#time-left').innerText + ' 🙂';
+    const curText = document.querySelector('#time-left').innerText;
+    const word = curText.indexOf('left') > -1 ? 'have' : 'are';
+    document.querySelector('textarea').value = 'FYI: We ' + word + ' ' + curText + ' 🙂';
     const sendBtnDiv = findUniqueElementByText('div', 'Send message');
     const sendBtn =  sendBtnDiv.parentNode.querySelector('button');
     sendBtn.removeAttribute('disabled');
