@@ -6,7 +6,7 @@ function injectTimeLeftElement() {
     }
 
     const div = document.createElement('div');
-    div.textContent = 'Checking time left...';
+    div.textContent = 'Checking...';
     div.id = "time-left";
     div.style.position = 'relative';
     div.style.top = '8px';
@@ -126,22 +126,33 @@ function setTimeRemaining(rawMeetingTime) {
   }
 
   const el = document.querySelector('#time-left');
-
   el.innerText = newText;
+
 
   if (timeDifference < 1) {
     el.style.background = "linear-gradient(135deg, rgb(211, 47, 47), rgb(239, 83, 80))"; // red
     showNotifyButton();
   } else if (timeDifference < 5) {
-    el.style.background = "linear-gradient(60deg, #FFEB3B, rgb(255, 119, 60));"; // orange
+    el.style.background = "linear-gradient(20deg, #ff773c, #ff3f3c)"; // orange
     showNotifyButton();
   } else if (timeDifference < 10) {
-    el.style.background = "linear-gradient(135deg, rgb(255, 193, 7), rgb(255, 214, 10))"; // yellow
+    console.log('setting timeDiff yellow', timeDiff);
     showNotifyButton();
   }
 }
 
+var TIME_LEFT_ATTEMPTS = 0;
+
 function mainTimeLeft() {
+
+  if (TIME_LEFT_ATTEMPTS > 60) {
+    console.log('gave up searching');
+    document.querySelector('#time-left').innerText = '🤷‍♂️';
+    return;
+  }
+
+  TIME_LEFT_ATTEMPTS += 1;
+
   const mainDiv = findUniqueElementByText('div', 'Meeting details');
   if (mainDiv === undefined) {
     // check again in a second...
@@ -181,7 +192,7 @@ function mainTimeLeft() {
     setTimeRemaining(schText);
     setInterval(() => {
       setTimeRemaining(schText);
-    }, 60000);
+    }, 20000); // refresh every 20s instead of 60s we don't get too far over/wrong
 
   }, 600);
 }
