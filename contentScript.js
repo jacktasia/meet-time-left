@@ -136,7 +136,7 @@ function setTimeRemaining(rawMeetingTime) {
     el.style.background = "linear-gradient(20deg, #ff773c, #ff3f3c)"; // orange
     showNotifyButton();
   } else if (timeDifference < 10) {
-    console.log('setting timeDiff yellow', timeDiff);
+    el.style.background = "linear-gradient(135deg, rgb(255, 193, 7), rgb(255, 214, 10))"; // yellow
     showNotifyButton();
   }
 }
