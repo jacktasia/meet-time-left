@@ -10,7 +10,7 @@ function injectTimeLeftElement() {
     div.id = "time-left";
     div.style.position = 'relative';
     div.style.top = '8px';
-    div.style.right = '160px';
+    div.style.right = '200px';
     div.style.background = "linear-gradient(135deg, rgb(50, 50, 50), rgb(90, 90, 90))";
     div.style.color = 'white';
     div.style.padding = '10px';
