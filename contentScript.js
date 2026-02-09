@@ -9,8 +9,8 @@ function injectTimeLeftElement() {
     div.textContent = 'Checking...';
     div.id = "time-left";
     div.style.position = 'relative';
-    div.style.top = '8px';
-    div.style.right = '200px';
+    div.style.top = '18px';
+    div.style.right = '300px';
     div.style.background = "linear-gradient(135deg, rgb(50, 50, 50), rgb(90, 90, 90))";
     div.style.color = 'white';
     div.style.padding = '10px';
